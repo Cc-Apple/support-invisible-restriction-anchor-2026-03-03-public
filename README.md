@@ -68,25 +68,25 @@ The same-day and next-day artifacts show the following structure:
 * ManagedSettings / ScreenTime local stores
 * com.apple.ScreenTime internal store activity
 * com.apple.Preferences UserSafety store
-* MCState showing `IsSupervised:false`
-* MCState showing `PostSetupProfileWasInstalled:false`
+* MCState showing IsSupervised:false
+* MCState showing PostSetupProfileWasInstalled:false
 * visible profile / payload manifest structures appearing empty
-* next-day Analytics showing `MDMStatus:false`
+* next-day Analytics showing MDMStatus:false
 * crash / CPU resource / FileProvider side effects on the same date
 * Find My / findmylocated-adjacent artifacts as auxiliary context
 
 ## Timeline summary
 
-* **2026-03-03 morning**: Apple Support contact records exist on the same date.
-* **2026-03-03 11:53**: sysdiagnose captured. ManagedSettings / ScreenTime local store observed. MCState artifacts observed.
-* **2026-03-03 12:14**: sysdiagnose captured. Similar ManagedSettings / MCState structure observed.
-* **2026-03-03 16:21**: device log shows Grab crash. User recalls discussing the sign-out restriction with Apple Support on the same date.
-* **2026-03-03 16:31-16:48**: ospredictiond CPU resource log and signpost_reporter CPU resource log. triald / deleted / searchd-adjacent context appears in related review.
-* **2026-03-03 20:09**: sysdiagnose captured. Partial evidence due to gzip issue, but ManagedSettings context was still observed.
-* **2026-03-03 20:51**: sysdiagnose captured. Partial evidence due to gzip issue, but ManagedSettings / MCState context was still observed.
-* **2026-03-03 20:59**: fileproviderd diskwrites resource log.
-* **2026-03-03 21:34**: sysdiagnose captured. ManagedSettings / MCState / FileProvider / Find My auxiliary context observed.
-* **2026-03-04**: Analytics log contains `MDMStatus:false` with CommCenter / Baseband / TelephonyBaseband context.
+* 2026-03-03 morning: Apple Support contact records exist on the same date.
+* 2026-03-03 11:53: sysdiagnose captured. ManagedSettings / ScreenTime local store observed. MCState artifacts observed.
+* 2026-03-03 12:14: sysdiagnose captured. Similar ManagedSettings / MCState structure observed.
+* 2026-03-03 16:21: device log shows Grab crash. User recalls discussing the sign-out restriction with Apple Support on the same date.
+* 2026-03-03 16:31-16:48: ospredictiond CPU resource log and signpost_reporter CPU resource log. triald / deleted / searchd-adjacent context appears in related review.
+* 2026-03-03 20:09: sysdiagnose captured. Partial evidence due to gzip issue, but ManagedSettings context was still observed.
+* 2026-03-03 20:51: sysdiagnose captured. Partial evidence due to gzip issue, but ManagedSettings / MCState context was still observed.
+* 2026-03-03 20:59: fileproviderd diskwrites resource log.
+* 2026-03-03 21:34: sysdiagnose captured. ManagedSettings / MCState / FileProvider / Find My auxiliary context observed.
+* 2026-03-04: Analytics log contains MDMStatus:false with CommCenter / Baseband / TelephonyBaseband context.
 
 ## Referenced raw log titles
 
@@ -96,16 +96,16 @@ They are listed only to support later verification and evidence matching.
 
 Primary archive:
 
-* `15G-2026-03-03.zip`
+* 15G-2026-03-03.zip
 
 Referenced contents:
 
-* `Grab-2026-03-03-162129.ips`
-* `ospredictiond.cpu_resource-2026-03-03-163418.ips`
-* `signpost_reporter.cpu_resource-2026-03-03-164816.ips`
-* `fileproviderd.diskwrites_resource`
-* `xp_amp_app_usage_dnu`
-* `Analytics-2026-03-04-070009.ips.ca.synced`
+* Grab-2026-03-03-162129.ips
+* ospredictiond.cpu_resource-2026-03-03-163418.ips
+* signpost_reporter.cpu_resource-2026-03-03-164816.ips
+* fileproviderd.diskwrites_resource
+* xp_amp_app_usage_dnu
+* Analytics-2026-03-04-070009.ips.ca.synced
 
 ## Referenced sysdiagnose archives
 
@@ -113,11 +113,11 @@ The sysdiagnose archives listed below are **not included** in this public reposi
 
 They are preserved separately.
 
-* `sysdiagnose_2026.03.03_11-53-34+0700_iPhone-OS_iPhone_22F76.tar.gz`
-* `sysdiagnose_2026.03.03_12-14-27+0700_iPhone-OS_iPhone_22F76.tar.gz`
-* `sysdiagnose_2026.03.03_20-09-49+0700_iPhone-OS_iPhone_22F76.tar.gz`
-* `sysdiagnose_2026.03.03_20-51-10+0700_iPhone-OS_iPhone_22F76.tar.gz`
-* `sysdiagnose_2026.03.03_21-34-04+0700_iPhone-OS_iPhone_22F76.tar.gz`
+* sysdiagnose_2026.03.03_11-53-34+0700_iPhone-OS_iPhone_22F76.tar.gz
+* sysdiagnose_2026.03.03_12-14-27+0700_iPhone-OS_iPhone_22F76.tar.gz
+* sysdiagnose_2026.03.03_20-09-49+0700_iPhone-OS_iPhone_22F76.tar.gz
+* sysdiagnose_2026.03.03_20-51-10+0700_iPhone-OS_iPhone_22F76.tar.gz
+* sysdiagnose_2026.03.03_21-34-04+0700_iPhone-OS_iPhone_22F76.tar.gz
 
 ## Key technical observations
 
@@ -125,58 +125,58 @@ They are preserved separately.
 
 Reviewed path:
 
-* `logs/ManagedSettings/SettingRecords.plist`
+* logs/ManagedSettings/SettingRecords.plist
 
 Observed structure:
 
-* `com.apple.ScreenTime`
+* com.apple.ScreenTime
 
-  * `isInternal: true`
-  * `store: SafariStore`
-  * `active: true`
+  * isInternal: true
+  * store: SafariStore
+  * active: true
 
-* `com.apple.Preferences`
+* com.apple.Preferences
 
-  * `isInternal: true`
-  * `store: UserSafety`
-  * `active: false`
-  * `syncToWatch: true`
+  * isInternal: true
+  * store: UserSafety
+  * active: false
+  * syncToWatch: true
 
 ### EffectiveSettings
 
 Observed values include:
 
-* `safari.denyPrivateBrowsing: false`
-* `safari.denyHistoryClearing: false`
+* safari.denyPrivateBrowsing: false
+* safari.denyHistoryClearing: false
 
 ### MCState
 
 Observed values include:
 
-* `IsSupervised: false`
-* `CloudConfigurationUIComplete: true`
-* `ConfigurationSource: 0`
-* `AllowPairing: true`
-* `PostSetupProfileWasInstalled: false`
+* IsSupervised: false
+* CloudConfigurationUIComplete: true
+* ConfigurationSource: 0
+* AllowPairing: true
+* PostSetupProfileWasInstalled: false
 
 ### Visible profile / payload structures
 
 Observed structures include:
 
-* `PayloadManifest`
+* PayloadManifest
 
-  * `OrderedProfiles: []`
-  * `HiddenProfiles: []`
+  * OrderedProfiles: []
+  * HiddenProfiles: []
 
-* `ProfileTruth: {}`
+* ProfileTruth: {}
 
-* `PayloadDependency: {}`
+* PayloadDependency: {}
 
 ### Next-day Analytics
 
 Observed value:
 
-* `MDMStatus:false`
+* MDMStatus:false
 
 ## Working interpretation
 

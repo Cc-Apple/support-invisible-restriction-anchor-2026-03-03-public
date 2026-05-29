@@ -16,12 +16,12 @@ Earlier versions of this repository incorrectly treated 2026-03-03 as the Apple 
 
 Correction:
 
-- 2026-03-03 is the preserved iOS artifact / sysdiagnose anchor date.
-- 2026-03-04 is an additional anchor date involving Lost Mode, Find My, Game Center UI exposure, Visual Intelligence / ANE pressure, and Account / Cloud / Trust burst observations.
-- 2026-03-05 is the Apple Support interaction date.
-- The Apple Support interaction window was approximately 11:10-11:31 VN time on 2026-03-05.
-- The 2026-03-05 artifacts show ManagedSettings / Safari restriction changes around 11:11:38 VN time and DMD / Digital Health / Game Center-related restriction recomputation shortly afterward.
-- Later on 2026-03-05, screenshots/video reportedly captured Screen Time restriction UI and Apple ID sign-out restriction behavior.
+* 2026-03-03 is the preserved iOS artifact / sysdiagnose anchor date.
+* 2026-03-04 is an additional anchor date involving Lost Mode, Find My, Game Center UI exposure, Visual Intelligence / ANE pressure, and Account / Cloud / Trust burst observations.
+* 2026-03-05 is the Apple Support interaction date.
+* The Apple Support interaction window was approximately 11:10-11:31 UTC+7 on 2026-03-05.
+* The 2026-03-05 artifacts show ManagedSettings / Safari restriction changes around 11:11:38 UTC+7 and DMD / Digital Health / Game Center-related restriction recomputation shortly afterward.
+* Later on 2026-03-05, screenshots/video reportedly captured Screen Time restriction UI and Apple ID sign-out restriction behavior.
 
 This correction does not remove the artifact value of 2026-03-03. It separates the case into three review dates:
 
@@ -37,15 +37,15 @@ Raw iOS logs, raw sysdiagnose archives, raw screenshots, and raw videos are not 
 
 This repository contains only:
 
-- written technical summaries
-- artifact names
-- referenced log titles
-- referenced sysdiagnose archive names
-- SHA256 references where available
-- timeline summaries
-- analysis scripts
-- machine-readable observation summaries
-- reviewer questions
+* written technical summaries
+* artifact names
+* referenced log titles
+* referenced sysdiagnose archive names
+* SHA256 references where available
+* timeline summaries
+* analysis scripts
+* machine-readable observation summaries
+* reviewer questions
 
 Original raw artifacts are preserved separately and may be provided later through a secure evidence-handling procedure if required by a qualified reviewer.
 
@@ -75,18 +75,18 @@ The key question is whether the observed behavior can be explained by ordinary l
 
 Reviewed artifacts repeatedly showed:
 
-- `MDMStatus:false`
-- `IsSupervised:false`
-- `PostSetupProfileWasInstalled:false`
-- empty visible profile / payload structures
-- ManagedSettings / ScreenTime local stores
-- DMD / Digital Health restriction recomputation
-- FileProvider / SaveToFiles activity
-- iCloud Drive shown as logged out / not configured in `brctl`
-- FileProvider iCloud Drive provider state still present as enabled / needs-auth
-- AppleAccount / CKKS / PCS / SOS / CloudServices / Networking bursts
-- storage and memory-pressure context
-- later visible Screen Time / sign-out restriction UI evidence on 2026-03-05
+* `MDMStatus:false`
+* `IsSupervised:false`
+* `PostSetupProfileWasInstalled:false`
+* empty visible profile / payload structures
+* ManagedSettings / ScreenTime local stores
+* DMD / Digital Health restriction recomputation
+* FileProvider / SaveToFiles activity
+* iCloud Drive shown as logged out / not configured in `brctl`
+* FileProvider iCloud Drive provider state still present as enabled / needs-auth
+* AppleAccount / CKKS / PCS / SOS / CloudServices / Networking bursts
+* storage and memory-pressure context
+* later visible Screen Time / sign-out restriction UI evidence on 2026-03-05
 
 ---
 
@@ -98,17 +98,17 @@ The 2026-03-03 artifacts are treated as the first artifact anchor.
 
 Key observations:
 
-- MCState present
-- `IsSupervised:false`
-- `PostSetupProfileWasInstalled:false`
-- visible profile / payload structures empty
-- ManagedSettings / ScreenTime local stores present
-- FileProvider / SaveToFiles activity present
-- iCloud Drive shown as logged out / not configured in `brctl`
-- FileProvider retained iCloud Drive provider state requiring authentication
-- large `fileproviderd` disk-write activity
-- storage and memory-pressure context
-- no classic visible MDM indicator found in reviewed artifacts
+* MCState present
+* `IsSupervised:false`
+* `PostSetupProfileWasInstalled:false`
+* visible profile / payload structures empty
+* ManagedSettings / ScreenTime local stores present
+* FileProvider / SaveToFiles activity present
+* iCloud Drive shown as logged out / not configured in `brctl`
+* FileProvider retained iCloud Drive provider state requiring authentication
+* large `fileproviderd` disk-write activity
+* storage and memory-pressure context
+* no classic visible MDM indicator found in reviewed artifacts
 
 This date is not the Apple Support contact date.
 
@@ -120,37 +120,37 @@ The 2026-03-04 artifacts are treated as an independent anchor, not merely a brid
 
 Key observations:
 
-- Apple Pay stopped notification around 04:20 VN time
-- Lost Mode enabled notification around 04:21 VN time
-- screenshot/video evidence reportedly preserved around 04:20-04:50 VN time
-- 04:43 Game Center UI screenshot reportedly captured
-- Game Center social / friends-related restriction baseline still present in MCState around 05:13
-- ANECompilerService large disk-write activity
-- Visual Intelligence / Photos / Spotlight / media analysis concentration
-- multiple 1GB-class disk-write events across ANECompilerService, WeChat, fileproviderd, and sysdiagnosed
-- Wi-Fi disassociation / WWAN state context
-- late-night physical-sensation report timestamp around 23:13 VN time
-- around the same time, SFA / CloudServices / CKKS / PCS / SOS / Networking burst observed
+* Apple Pay stopped notification around 04:20 UTC+7
+* Lost Mode enabled notification around 04:21 UTC+7
+* screenshot/video evidence reportedly preserved around 04:20-04:50 UTC+7
+* 04:43 UTC+7 Game Center UI screenshot reportedly captured
+* Game Center social / friends-related restriction baseline still present in MCState around 05:13 UTC+7
+* ANECompilerService large disk-write activity
+* Visual Intelligence / Photos / Spotlight / media analysis concentration
+* multiple 1GB-class disk-write events across ANECompilerService, WeChat, fileproviderd, and sysdiagnosed
+* Wi-Fi disassociation / WWAN state context
+* late-night physical-sensation report timestamp around 23:13 UTC+7
+* around the same time, SFA / CloudServices / CKKS / PCS / SOS / Networking burst observed
 
 Subjective physical observations are not treated as standalone proof of an external physical source. They are used only as contemporaneous timestamp context for why the user was interacting with and observing the device.
 
 ---
 
-### 2026-03-05 - Apple Support / ManagedSettings anchor
+### 2026-03-05 - support-window anchor
 
 The 2026-03-05 artifacts are treated as the Apple Support interaction anchor.
 
 Key observations:
 
-- Apple Support interaction window approximately 11:10-11:31 VN time
-- ManagedSettings / Safari restriction changes around 11:11:38 VN time
-- DMD / Digital Health restriction recomputation shortly afterward
-- Game Center social / friends-related restriction recomputation around 11:14 VN time
-- Apple Support-side confirmation reportedly indicated no ordinary visible Screen Time / Family Sharing / MDM / supervision configuration matching the observed restriction state
-- 18:11 VN time screenshot reportedly captured Screen Time restriction-related UI
-- 18:12 VN time video reportedly captured Screen Time settings and Apple ID sign-out restriction behavior
-- WeChat large disk-write pressure later the same day
-- no classic visible MDM / supervision / profile indicator found in reviewed artifacts
+* Apple Support interaction window around 11:10-11:31 UTC+7
+* ManagedSettings / Safari restriction changes around 11:11:38 UTC+7
+* DMD / Digital Health restriction recomputation shortly afterward
+* Game Center social / friends-related restriction recomputation around 11:14 UTC+7
+* Apple Support-side confirmation reportedly indicated no ordinary visible Screen Time / Family Sharing / MDM / supervision configuration matching the observed restriction state
+* 18:11 UTC+7 screenshot reportedly captured Screen Time restriction-related UI
+* 18:12 UTC+7 video reportedly captured Screen Time settings and Apple ID sign-out restriction behavior
+* WeChat large disk-write pressure later the same day
+* no classic visible MDM / supervision / profile indicator found in reviewed artifacts
 
 ---
 
@@ -184,21 +184,21 @@ This repository does not attribute the observed behavior to APT32, APT42, APT28,
 
 However, for reviewer framing, the observed seam failures are compared at the TTP level with public models:
 
-- physical-proximity Wi-Fi access models such as Evil Twin / Rogue AP techniques
-- credential / trust-state capture or manipulation hypotheses
-- cloud/account-focused social engineering models
-- user-interaction-gated account/control workflows
-- support/account workflow manipulation
-- visible MDM/profile absent, but internal restriction layers present
+* physical-proximity Wi-Fi access models such as Evil Twin / Rogue AP techniques
+* credential / trust-state capture or manipulation hypotheses
+* cloud/account-focused social engineering models
+* user-interaction-gated account/control workflows
+* support/account workflow manipulation
+* visible MDM/profile absent, but internal restriction layers present
 
 These are comparison models only.
 
 The current working hypothesis is:
 
-Physical-proximity-seeded account / trust-state manipulation  
-plus  
-user-interaction-gated cloud/account-control workflow  
-plus  
+Physical-proximity-seeded account / trust-state manipulation
+plus
+user-interaction-gated cloud/account-control workflow
+plus
 visible-management-absent internal restriction layer exposure.
 
 This is not an attribution claim.
@@ -209,14 +209,14 @@ This is not an attribution claim.
 
 This repository is not:
 
-- a malware sample repository
-- an exploit repository
-- a zero-day claim
-- an attribution report
-- a public accusation
-- a claim that Apple intentionally performed the observed actions
-- a claim that any named APT group performed the observed actions
-- a claim that Evil Twin or malicious profile injection has been proven
+* a malware sample repository
+* an exploit repository
+* a zero-day claim
+* an attribution report
+* a public accusation
+* a claim that Apple intentionally performed the observed actions
+* a claim that any named APT group performed the observed actions
+* a claim that Evil Twin or malicious profile injection has been proven
 
 ---
 
@@ -236,28 +236,28 @@ Reviewers are asked to evaluate:
 
 ## Repository map
 
-- `00_public_boundary/`  
+* `00_public_boundary/`
   Correction notice, device label, public scope, reviewer boundary.
 
-- `01_anchor_2026-03-03/`  
+* `01_anchor_2026-03-03/`
   2026-03-03 artifact anchor.
 
-- `02_anchor_2026-03-04/`  
+* `02_anchor_2026-03-04/`
   2026-03-04 Lost Mode / Game Center / pressure / trust-burst anchor.
 
-- `03_anchor_2026-03-05/`  
+* `03_anchor_2026-03-05/`
   2026-03-05 Apple Support / ManagedSettings / DMD / UI evidence anchor.
 
-- `04_cross_day_correlation/`  
+* `04_cross_day_correlation/`
   Cross-day comparison and TTP hypothesis.
 
-- `05_evidence_index/`  
+* `05_evidence_index/`
   Artifact inventory, private screenshot/video index, SHA256 references.
 
-- `06_machine_readable/`  
+* `06_machine_readable/`
   YAML summaries for machine review.
 
-- `scripts/`  
+* `scripts/`
   Reproducibility scripts for event extraction and reference hashing.
 
 ---

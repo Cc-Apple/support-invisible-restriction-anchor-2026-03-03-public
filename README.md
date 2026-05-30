@@ -431,3 +431,6 @@ The preferred outcome is not confirmation.
 
 The preferred outcome is a reproducible explanation that supports, weakens, or falsifies each hypothesis.
 
+The preferred outcome is not confirmation.
+
+The preferred outcome is a reproducible explanation that supports, weakens, or falsifies each hypothesis.

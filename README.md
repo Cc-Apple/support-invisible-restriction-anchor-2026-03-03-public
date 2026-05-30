@@ -269,3 +269,165 @@ The requested review is narrow:
 Preserve the artifacts, test the timeline, compare normal vs abnormal interpretations, and determine whether the observed restriction state can be explained by ordinary iOS behavior.
 
 No attribution conclusion should be drawn from this public package alone.
+
+---
+
+## Shadow Cloud Hypothesis Mapping
+
+This repository is a focused technical anchor for the invisible / support-adjacent restriction layer.
+
+It should be read as a supporting package for the main Shadow Cloud working model, not as a standalone attribution claim.
+
+This anchor is most relevant to three reviewer-facing hypotheses:
+
+1. **Policy-as-Persistence**
+2. **Trust-Graph Poisoning**
+3. **Evidence-Suppression Objective**
+
+These hypotheses are not conclusions.
+
+They are validation targets for qualified DFIR, CTI, mobile forensic, platform-security, or OS-security review.
+
+---
+
+## 1. Policy-as-Persistence
+
+### Relevance to this anchor
+
+This repository focuses on restriction-layer behavior that appears without a clear visible management indicator.
+
+The main question is whether policy state, restriction state, ScreenTime state, ManagedSettings behavior, Apple ID sign-out restriction behavior, or management-adjacent daemon activity could act as a persistence surface.
+
+This does not require a classic malware payload to be visible.
+
+### Reviewer question
+
+> Is policy state acting as persistence, or can all observed restriction behavior be explained by normal Apple / iOS / iCloud / ScreenTime behavior?
+
+### Relevant signal categories
+
+* ScreenTime state
+* Content & Privacy restriction behavior
+* Apple ID sign-out restriction behavior
+* ManagedSettings / FamilyControls traces
+* management-adjacent daemon activity
+* visible MDM / supervised / userIsManaged state mismatch
+* repeated restriction-like behavior across device or account lineage
+
+### What would support this hypothesis
+
+* restriction behavior recurring without clear user configuration
+* restriction behavior correlating with management-adjacent daemon activity
+* restriction behavior persisting across restore, migration, Apple ID lineage, or device transitions
+* mismatch between visible management state and effective restriction-like behavior
+
+### What would weaken it
+
+* confirmed local user configuration explaining the restriction behavior
+* normal Apple / iOS / iCloud / ScreenTime behavior fully explaining the pattern
+* no cross-device, cross-generation, or account-lineage continuity
+* vendor-confirmed benign explanation for the relevant restriction-state transitions
+
+---
+
+## 2. Trust-Graph Poisoning
+
+### Relevance to this anchor
+
+The restriction event is not treated only as a local device issue.
+
+It may reflect distortion of a broader trust graph involving Apple ID lineage, trusted-device behavior, account state, ScreenTime state, backup lineage, or authentication-related trust state.
+
+### Reviewer question
+
+> Is the trusted relationship itself being distorted across devices, accounts, backups, or authentication events?
+
+### Relevant signal categories
+
+* Apple ID lineage
+* trusted devices
+* device identity continuity
+* usageClientId transitions
+* backup lineage
+* ScreenTime / restriction state continuity
+* authentication or re-authentication events
+* financial device-trust exposure, if present in the broader dataset
+
+### What would support this hypothesis
+
+* similar restriction or trust-state anomalies across multiple Apple devices
+* continuity after device replacement, restore, or Apple ID migration
+* repeated mismatch between visible management state and effective restriction behavior
+* correlation between account / trust-state anomalies and authentication events
+
+### What would weaken it
+
+* all events explained by normal account migration, restore, or device replacement
+* no cross-device or account-lineage continuity
+* no relationship between restriction behavior and trust-state transitions
+* clean platform-side confirmation that all trusted-device states were normal
+
+---
+
+## 3. Evidence-Suppression Objective
+
+### Relevance to this anchor
+
+The restriction layer may affect not only device usability, but also the user’s ability to preserve, export, explain, or validate evidence.
+
+This does not prove malicious suppression.
+
+It defines a review question: whether evidence-preservation behavior remained normal during important restriction-layer events.
+
+### Reviewer question
+
+> Did the system behave normally when the user attempted to preserve evidence?
+
+### Relevant signal categories
+
+* screenshot capture behavior
+* screen recording behavior
+* storage pressure during critical events
+* backup inconsistency
+* log preservation degradation
+* artifact export difficulty
+* restriction state interfering with user action
+* timing correlation between evidence-preservation attempts and system degradation
+
+### What would support this hypothesis
+
+* preservation failures repeating during high-value events
+* user evidence actions correlating with resource, daemon, restriction, or backup anomalies
+* successful preservation on comparison devices under similar conditions
+* failure modes aligning with the most important restriction-layer event windows
+
+### What would weaken it
+
+* preservation failures fully explained by storage exhaustion, user error, tool limitations, or ordinary iOS behavior
+* no timing relationship to important restriction-layer events
+* same failures reproduced on clean control devices
+* no link between preservation failure and control-layer anomalies
+
+---
+
+## Boundary
+
+This repository does not assert:
+
+* malware attribution
+* actor attribution
+* state attribution
+* Apple-side causation
+* classic MDM enrollment
+* known spyware family deployment
+* confirmed C2
+* confirmed payload
+* confirmed exploit chain
+* Evil Twin / rogue AP use as a proven fact
+
+This anchor only asks whether invisible or support-adjacent restriction behavior should be treated as a meaningful control-layer signal for deeper review.
+
+The preferred outcome is not confirmation.
+
+The preferred outcome is a reproducible explanation that supports, weakens, or falsifies each hypothesis.
+

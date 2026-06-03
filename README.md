@@ -8,6 +8,21 @@ This repository is intended for qualified digital forensics, incident response, 
 
 It is not a public accusation, attribution claim, malware conclusion, or attribution claim against any vendor, country, group, or individual.
 
+This repository is a focused technical anchor supporting the broader **Shadow Cloud** working hypothesis.
+
+The current recommended broader framing is:
+
+> Shadow Cloud is a non-attribution, LOTL-like Apple platform-state / trust-state abuse hypothesis.
+
+For this repository, that means the reviewed question is not only whether a visible MDM profile exists.
+
+The reviewed question is whether Apple platform state, restriction state, trust state, FileProvider state, iCloud state, ManagedSettings state, and evidence-preservation behavior appear to cluster in a way that normal Apple / iOS behavior can explain.
+
+In short:
+
+> Not living off tools.  
+> Living off Apple platform state.
+
 ---
 
 ## Correction notice
@@ -72,6 +87,16 @@ Important note:
 The core question is not whether classic visible MDM was installed.
 
 The key question is whether the observed behavior can be explained by ordinary local Screen Time / Family Sharing / ManagedSettings behavior, or whether the artifacts show an account/cloud/policy-adjacent restriction state that was not visible as ordinary MDM, supervision, or configuration profile management.
+
+Under the updated Shadow Cloud framing, this anchor should be read as a **policy-state / restriction-state seam review package**.
+
+The narrow technical question is:
+
+> Can a restriction-like state surface through ScreenTime / ManagedSettings / DMD / Apple ID sign-out behavior while ordinary visible management indicators remain absent?
+
+The broader Shadow Cloud question is:
+
+> Can Apple platform state itself become the anomaly surface?
 
 Reviewed artifacts repeatedly showed:
 
@@ -180,10 +205,11 @@ This repository does not claim the answer. It preserves the question and the art
 
 ## TTP comparison hypothesis
 
-This repository does not attribute the observed behavior to APT32, APT42, APT28, APT41, APT10, APT27, Pegasus, NSO Group, Apple, or any state actor.
+This repository does not attribute the observed behavior to APT32, APT42, APT28, APT41, APT10, APT27, Pegasus, NSO Group, Apple, iMazing, any state actor, any vendor, or any known spyware family.
 
 However, for reviewer framing, the observed seam failures are compared at the TTP level with public models:
 
+* living-off-the-land-like platform-state abuse
 * physical-proximity Wi-Fi access models such as Evil Twin / Rogue AP techniques
 * credential / trust-state capture or manipulation hypotheses
 * cloud/account-focused social engineering models
@@ -193,15 +219,54 @@ However, for reviewer framing, the observed seam failures are compared at the TT
 
 These are comparison models only.
 
-The current working hypothesis is:
+The updated working hypothesis for the broader Shadow Cloud model is:
+
+> LOTL-like Apple platform-state / trust-state abuse.
+
+For this focused anchor, the local working hypothesis is:
 
 Physical-proximity-seeded account / trust-state manipulation
 plus
 user-interaction-gated cloud/account-control workflow
 plus
-visible-management-absent internal restriction layer exposure.
+visible-management-absent internal restriction layer exposure
+within a broader LOTL-like Apple platform-state abuse framing.
 
 This is not an attribution claim.
+
+---
+
+## LOTL-like Apple platform-state relevance
+
+Traditional Living-off-the-Land activity usually refers to legitimate tools, valid accounts, native processes, administrative workflows, or normal-looking cloud activity.
+
+This anchor is not about PowerShell, WMI, RDP, PsExec, SSH, VPN access, or enterprise admin tools.
+
+The analogous Apple ecosystem surfaces in this anchor are:
+
+* Apple ID trust state
+* iCloud / FileProvider state
+* ManagedSettings
+* ScreenTime
+* DMD / Digital Health recomputation
+* Game Center restriction state
+* visible MDM absence
+* profile / payload absence
+* Apple ID sign-out restriction behavior
+* storage pressure during evidence-preservation windows
+* Apple Support / account workflow context
+
+Traditional LOTL:
+
+> Uses legitimate tools.
+
+Shadow Cloud / this anchor:
+
+> May use or distort legitimate platform state.
+
+The review target is therefore not only whether an implant exists.
+
+The review target is whether Apple platform state behaves normally across account, restriction, support-workflow, and evidence-preservation layers.
 
 ---
 
@@ -215,8 +280,12 @@ This repository is not:
 * an attribution report
 * a public accusation
 * a claim that Apple intentionally performed the observed actions
+* a claim that iMazing intentionally performed the observed actions
 * a claim that any named APT group performed the observed actions
 * a claim that Evil Twin or malicious profile injection has been proven
+* a claim that classic visible MDM enrollment has been proven
+* a claim that ScreenTime artifacts alone prove compromise
+* a claim that subjective observations alone prove compromise
 
 ---
 
@@ -231,6 +300,9 @@ Reviewers are asked to evaluate:
 5. Whether 1GB-class disk-write patterns across 2026-03-03, 2026-03-04, and 2026-03-05 are ordinary low-storage behavior or a meaningful repeated pattern.
 6. Whether AppleAccount / CKKS / PCS / SOS / CloudServices / Networking bursts align with normal account health reporting or suggest an unusual account/trust-state transition.
 7. Whether the later Screen Time / Apple ID sign-out restriction UI evidence can be explained without ordinary visible MDM / Family Sharing / Screen Time configuration.
+8. Whether the observed restriction-state pattern is better explained as normal Apple platform state or as a possible LOTL-like platform-state anomaly surface.
+9. Whether storage / disk-write / evidence-preservation difficulty during the same windows is ordinary or relevant to the broader evidence-preservation question.
+10. Whether this focused anchor supports, weakens, or falsifies the broader Shadow Cloud platform-state review model.
 
 ---
 
@@ -262,6 +334,35 @@ Reviewers are asked to evaluate:
 
 ---
 
+## Relationship to the main Shadow Cloud repository
+
+This repository is a focused technical anchor.
+
+It should be read together with the main Shadow Cloud repository:
+
+* `apple-account-control-layer-forensics`
+
+The main repository provides the broader model:
+
+> Shadow Cloud as a non-attribution, LOTL-like Apple platform-state / trust-state abuse hypothesis.
+
+This focused repository provides a narrower restriction-layer anchor involving:
+
+* visible MDM absence
+* ManagedSettings
+* ScreenTime
+* DMD / Digital Health
+* Apple Support workflow timing
+* Apple ID sign-out restriction behavior
+* FileProvider / iCloud state
+* resource pressure and evidence-preservation context
+
+This repository does not replace the main model.
+
+It supports one technical branch of that model.
+
+---
+
 ## Review posture
 
 The requested review is narrow:
@@ -269,6 +370,10 @@ The requested review is narrow:
 Preserve the artifacts, test the timeline, compare normal vs abnormal interpretations, and determine whether the observed restriction state can be explained by ordinary iOS behavior.
 
 No attribution conclusion should be drawn from this public package alone.
+
+The preferred outcome is not confirmation.
+
+The preferred outcome is a reproducible explanation that supports, weakens, or falsifies the restriction-layer hypothesis.
 
 ---
 
@@ -278,11 +383,12 @@ This repository is a focused technical anchor for the invisible / support-adjace
 
 It should be read as a supporting package for the main Shadow Cloud working model, not as a standalone attribution claim.
 
-This anchor is most relevant to three reviewer-facing hypotheses:
+This anchor is most relevant to four reviewer-facing hypotheses:
 
 1. **Policy-as-Persistence**
 2. **Trust-Graph Poisoning**
 3. **Evidence-Suppression Objective**
+4. **LOTL-like Platform-State Abuse**
 
 These hypotheses are not conclusions.
 
@@ -410,6 +516,51 @@ It defines a review question: whether evidence-preservation behavior remained no
 
 ---
 
+## 4. LOTL-like Platform-State Abuse
+
+### Relevance to this anchor
+
+This anchor is a direct example of the broader platform-state review question.
+
+The observed concern is not a visible malicious tool.
+
+The observed concern is whether normal-looking Apple platform states may be functioning as the anomaly surface.
+
+Relevant surfaces include:
+
+* ScreenTime state
+* ManagedSettings state
+* DMD / Digital Health recomputation
+* visible MDM absence
+* Apple ID sign-out restriction behavior
+* FileProvider / iCloud provider state
+* AppleAccount / CKKS / PCS / SOS / CloudServices bursts
+* storage pressure and disk-write context
+* support-window timing
+* screenshot / video preservation context
+
+### Reviewer question
+
+> Is this ordinary Apple restriction-state behavior, or a LOTL-like platform-state anomaly surface?
+
+### What would support this hypothesis
+
+* restriction-like behavior without ordinary visible MDM / supervision / profile indicators
+* ScreenTime / ManagedSettings / DMD activity aligning with account or support-window events
+* FileProvider / iCloud state mismatch aligning with restriction or evidence-preservation activity
+* storage pressure and evidence-preservation difficulty clustering around high-value review windows
+* recurrence across device or account lineage
+
+### What would weaken it
+
+* confirmed ordinary ScreenTime / Family Sharing / ManagedSettings configuration
+* Apple-documented behavior explaining all observed state transitions
+* local user action explaining the restriction state
+* clean reproduction on control devices under normal conditions
+* no relationship between restriction state, account state, FileProvider state, and evidence-preservation windows
+
+---
+
 ## Boundary
 
 This repository does not assert:
@@ -418,14 +569,18 @@ This repository does not assert:
 * actor attribution
 * state attribution
 * Apple-side causation
+* iMazing-side causation
 * classic MDM enrollment
 * known spyware family deployment
 * confirmed C2
 * confirmed payload
 * confirmed exploit chain
 * Evil Twin / rogue AP use as a proven fact
+* confirmed telecom compromise
+* confirmed baseband compromise
+* confirmed OTP interception
 
-This anchor only asks whether invisible or support-adjacent restriction behavior should be treated as a meaningful control-layer signal for deeper review.
+This anchor only asks whether invisible or support-adjacent restriction behavior should be treated as a meaningful control-layer / platform-state signal for deeper review.
 
 The preferred outcome is not confirmation.
 
